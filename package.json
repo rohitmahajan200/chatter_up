@@ -1,0 +1,13 @@
+{
+  "name": "chatterup",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000c\u0000h\u0000a\u0000t\u0000t\u0000e\u0000r\u0000_\u0000u\u0000p\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start":"npm run start --backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
