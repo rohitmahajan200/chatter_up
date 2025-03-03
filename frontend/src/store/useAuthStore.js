@@ -11,7 +11,7 @@ export const useAuthStore=create((set,get)=>({
     isCheckingAuth:true,
     onlineUsers:[],
     socket:null,
-    
+
     checkAuth:async()=>{
         try {
             const res=await axiosInsatance.get("/auth/check");
@@ -82,7 +82,6 @@ export const useAuthStore=create((set,get)=>({
     connectSocket:async()=>{
         const {authUser}=get();
         if(!authUser || get().socket?.connected)return;
-
         const socket=io("http://localhost:3000",{
             query:{
                 userId:authUser._id

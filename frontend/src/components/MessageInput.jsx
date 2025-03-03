@@ -8,6 +8,8 @@ const MessageInput = () => {
     const [imagePreview,setImagePreview]=useState(null);
     const fileInputRef=useRef(null);
     const {sendMessages}=useChatStore();
+    const {startTyping,stopTyping}=useChatStore();
+    
 
     const handleImageChange=(e)=>{
         const file=e.target.files[0];
@@ -46,10 +48,22 @@ const MessageInput = () => {
         if(fileInputRef.current){
           fileInputRef.current.value=""
         }
+        stopTyping();
+        
 
         } catch (error) {
             console.log("failed to send message error in MessageInput=>",error);
         }
+    }
+
+    const handleTextBoxOnChange=async(e)=>{
+      //e.preventDefault()
+      setText(e.target.value);
+      if(e.target.value){
+        startTyping();
+      }else{
+        stopTyping();
+      }
     }
 
   return (
@@ -81,7 +95,7 @@ const MessageInput = () => {
             className="w-full input input-bordered rounded-lg input-sm sm:input-md"
             placeholder="Type a message..."
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={handleTextBoxOnChange}
           />
           <input
             type="file"
